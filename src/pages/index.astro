@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog'))
+const posts = (await getCollection('posts'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 6);
 const baseUrl = import.meta.env.BASE_URL;

@@ -1,10 +1,10 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { site } from '../../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('posts');
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
