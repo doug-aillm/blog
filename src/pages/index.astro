@@ -6,6 +6,8 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('posts'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 6);
+const latestPost = posts[0];
+const featuredPost = posts[1];
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
@@ -14,25 +16,29 @@ const baseUrl = import.meta.env.BASE_URL;
     <div>
       <span class="tagline">{site.description}</span>
       <h1>Daily signal for crypto builders and modern technologists.</h1>
-      <p>
+      <p class="hero-lede">
         Curated by {site.author}, an {site.role.toLowerCase()}. Each digest captures
         what matters across Web3, DeFi, AI tooling, and emerging developer ecosystems.
       </p>
+      <div class="hero-actions">
+        <a class="button primary" href={`${baseUrl}/archive`}>Browse the archive</a>
+        <a class="button ghost" href={`${baseUrl}/about`}>Meet the curator</a>
+      </div>
     </div>
     <div class="hero-card">
       <div class="tagline">Latest digest</div>
-      {posts.length ? (
+      {latestPost ? (
         <>
-          <h2>{posts[0].data.title}</h2>
+          <h2>{latestPost.data.title}</h2>
           <p>
-            {posts[0].data.pubDate.toLocaleDateString('en-US', {
+            {latestPost.data.pubDate.toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
               day: 'numeric',
             })}
           </p>
-          {posts[0].data.description && <p>{posts[0].data.description}</p>}
-          <a href={`${baseUrl}/${posts[0].slug}`}>
+          {latestPost.data.description && <p>{latestPost.data.description}</p>}
+          <a href={`${baseUrl}/${latestPost.slug}`}>
             Read the latest digest
           </a>
         </>
@@ -53,6 +59,48 @@ const baseUrl = import.meta.env.BASE_URL;
         <span class="badge">Tech Trends</span>
       </div>
     </div>
+  </section>
+
+  <section class="container featured">
+    <div class="section-head">
+      <div>
+        <span class="tagline">Featured</span>
+        <h2 class="section-title">Spotlight digest</h2>
+      </div>
+      <p class="section-lede">
+        A deeper read from the recent archive, curated for builders who want context
+        beyond the headlines.
+      </p>
+    </div>
+    {featuredPost ? (
+      <article class="featured-card">
+        <div>
+          <div class="post-meta">
+            {featuredPost.data.pubDate.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </div>
+          <h3>{featuredPost.data.title}</h3>
+          {featuredPost.data.description && <p>{featuredPost.data.description}</p>}
+          {!!featuredPost.data.tags?.length && (
+            <div class="badges">
+              {featuredPost.data.tags.map((tag) => (
+                <span class="badge">{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+        <a class="button primary" href={`${baseUrl}/${featuredPost.slug}`}>
+          Read the featured digest
+        </a>
+      </article>
+    ) : (
+      <div class="empty-state">
+        Featured slot opens once a second digest is published.
+      </div>
+    )}
   </section>
 
   <section class="container">
