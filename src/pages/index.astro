@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 6);
+---
+
+<BaseLayout title={site.title} description={site.description}>
+  <section class="container hero">
+    <div>
+      <span class="tagline">{site.description}</span>
+      <h1>Daily signal for crypto builders and modern technologists.</h1>
+      <p>
+        Curated by {site.author}, an {site.role.toLowerCase()}. Each digest captures
+        what matters across Web3, DeFi, AI tooling, and emerging developer ecosystems.
+      </p>
+    </div>
+    <div class="hero-card">
+      <div class="tagline">What to expect</div>
+      <h2>Daily digest flow</h2>
+      <p>
+        Drop a markdown file named YYYY-MM-DD.md into <code>src/content/blog/</code>
+        and it will auto-publish on the site and RSS feed.
+      </p>
+      <div class="badges">
+        <span class="badge">Crypto</span>
+        <span class="badge">DeFi</span>
+        <span class="badge">Dev Tools</span>
+        <span class="badge">AI</span>
+        <span class="badge">Tech Trends</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2 class="section-title">Latest digests</h2>
+    {posts.length ? (
+      <div class="post-grid">
+        {posts.map((post) => (
+          <article class="post-card">
+            <div class="post-meta">
+              {post.data.pubDate.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </div>
+            <a href={`/blog/${post.slug}`}>
+              <h3>{post.data.title}</h3>
+            </a>
+            {post.data.description && <p>{post.data.description}</p>}
+            {!!post.data.tags?.length && (
+              <div class="badges">
+                {post.data.tags.map((tag) => (
+                  <span class="badge">{tag}</span>
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">
+        No digests yet. Add your first daily file in <code>src/content/blog/</code>
+        with frontmatter fields: title, pubDate, tags, description.
+      </div>
+    )}
+  </section>
+</BaseLayout>

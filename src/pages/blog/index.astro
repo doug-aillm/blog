@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title={`Archive · ${site.title}`} description={site.description}>
+  <section class="container">
+    <h1 class="section-title">Daily digest archive</h1>
+    {posts.length ? (
+      <div class="post-grid">
+        {posts.map((post) => (
+          <article class="post-card">
+            <div class="post-meta">
+              {post.data.pubDate.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </div>
+            <a href={`/blog/${post.slug}`}>
+              <h3>{post.data.title}</h3>
+            </a>
+            {post.data.description && <p>{post.data.description}</p>}
+            {!!post.data.tags?.length && (
+              <div class="badges">
+                {post.data.tags.map((tag) => (
+                  <span class="badge">{tag}</span>
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">
+        Archive is empty. Add markdown files to <code>src/content/blog/</code>.
+      </div>
+    )}
+  </section>
+</BaseLayout>

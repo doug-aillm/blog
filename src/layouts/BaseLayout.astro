@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+
+const { title = site.title, description = site.description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header>
+        <div class="container nav">
+          <a class="brand" href="/">
+            <span class="brand-title">{site.title}</span>
+            <span class="brand-subtitle">{site.author} · {site.role}</span>
+          </a>
+          <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/blog">Archive</a>
+            <a href="/rss.xml">RSS</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer>
+        <div class="container">
+          <div>{site.description}</div>
+          <div>© {new Date().getFullYear()} {site.author}. All rights reserved.</div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
