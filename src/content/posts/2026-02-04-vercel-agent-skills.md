@@ -3,10 +3,10 @@ title: "Vercel Agent Skills: Structured Knowledge for AI Coding Agents"
 pubDate: 2026-02-04
 description: "A technical tour of Vercel's Agent Skills collection: five curated skills, 100+ rules, and practical ways to plug them into real-world AI coding workflows."
 tags: ['ai', 'dev-tools', 'react', 'nextjs']
-heroImage: "https://images.unsplash.com/photo-O3ChbcT94NM?w=1200&q=80"
+heroImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80"
 ---
 
-![Coding workstation hero](https://images.unsplash.com/photo-O3ChbcT94NM?w=1200&q=80)
+![Coding workstation hero](https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80)
 
 # Vercel Agent Skills: Structured Knowledge for AI Coding Agents
 

@@ -52,6 +52,21 @@ code {
   font-size: 0.9em;
 }
 
+pre {
+  background: rgba(44, 122, 123, 0.08);
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  padding: 20px 24px;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
 img {
   max-width: 100%;
   height: auto;
