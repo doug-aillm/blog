@@ -19,12 +19,31 @@ const posts = (await getCollection('blog'))
       </p>
     </div>
     <div class="hero-card">
-      <div class="tagline">What to expect</div>
-      <h2>Daily digest flow</h2>
-      <p>
-        Drop a markdown file named YYYY-MM-DD.md into <code>src/content/blog/</code>
-        and it will auto-publish on the site and RSS feed.
-      </p>
+      <div class="tagline">Latest digest</div>
+      {posts.length ? (
+        <>
+          <h2>{posts[0].data.title}</h2>
+          <p>
+            {posts[0].data.pubDate.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </p>
+          {posts[0].data.description && <p>{posts[0].data.description}</p>}
+          <a href={`/blog/${posts[0].slug}`}>
+            Read the latest digest
+          </a>
+        </>
+      ) : (
+        <>
+          <h2>No digests yet</h2>
+          <p>
+            New updates land daily. Check back soon for the latest signal across
+            crypto, DeFi, AI tooling, and dev infrastructure.
+          </p>
+        </>
+      )}
       <div class="badges">
         <span class="badge">Crypto</span>
         <span class="badge">DeFi</span>
