@@ -32,7 +32,7 @@ const baseUrl = import.meta.env.BASE_URL;
             })}
           </p>
           {posts[0].data.description && <p>{posts[0].data.description}</p>}
-          <a href={`${baseUrl}/blog/${posts[0].slug}`}>
+          <a href={`${baseUrl}/${posts[0].slug}`}>
             Read the latest digest
           </a>
         </>
@@ -68,7 +68,7 @@ const baseUrl = import.meta.env.BASE_URL;
                 day: 'numeric',
               })}
             </div>
-            <a href={`${baseUrl}/blog/${post.slug}`}>
+            <a href={`${baseUrl}/${post.slug}`}>
               <h3>{post.data.title}</h3>
             </a>
             {post.data.description && <p>{post.data.description}</p>}
