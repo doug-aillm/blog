@@ -6,6 +6,7 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title={`Archive · ${site.title}`} description={site.description}>
@@ -22,7 +23,7 @@ const posts = (await getCollection('blog')).sort(
                 day: 'numeric',
               })}
             </div>
-            <a href={`/blog/${post.slug}`}>
+            <a href={`${baseUrl}/blog/${post.slug}`}>
               <h3>{post.data.title}</h3>
             </a>
             {post.data.description && <p>{post.data.description}</p>}

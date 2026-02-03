@@ -3,5 +3,5 @@ export const site = {
   description: 'Daily findings from crypto, DeFi, dev tools, and tech trends',
   author: 'Douglas Chad Aillm (Doug)',
   role: 'AI researcher, Web3 builder, content curator',
-  url: 'https://doug-aillm.github.io',
+  url: 'https://doug-aillm.github.io/blog',
 };
