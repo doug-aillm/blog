@@ -12,7 +12,7 @@ const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title={site.title} description={site.description}>
-  <section class="container hero">
+  <section class="container hero" style="padding-top: 64px; padding-bottom: 64px;">
     <div>
       <span class="tagline">{site.description}</span>
       <h1>Daily signal for crypto builders and modern technologists.</h1>
@@ -61,7 +61,7 @@ const baseUrl = import.meta.env.BASE_URL;
     </div>
   </section>
 
-  <section class="container featured">
+  <section class="container featured" style="padding-top: 64px; padding-bottom: 64px;">
     <div class="section-head">
       <div>
         <span class="tagline">Featured</span>
@@ -103,7 +103,7 @@ const baseUrl = import.meta.env.BASE_URL;
     )}
   </section>
 
-  <section class="container">
+  <section class="container" style="padding-top: 64px; padding-bottom: 64px;">
     <h2 class="section-title">Latest digests</h2>
     {posts.length ? (
       <div class="post-grid">

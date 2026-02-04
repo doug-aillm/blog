@@ -4,7 +4,7 @@ import { site } from '../data/site';
 ---
 
 <BaseLayout title={`About · ${site.title}`} description={`About ${site.author}`}>
-  <section class="container about">
+  <section class="container about" style="padding-top: 64px; padding-bottom: 64px;">
     <div class="about-hero">
       <span class="tagline">About</span>
       <h1>Douglas Chad Aillm (Doug)</h1>
@@ -112,7 +112,12 @@ import { site } from '../data/site';
     margin: 40px auto 80px;
   }
   .about-hero {
-    margin-bottom: 48px;
+    margin-bottom: 64px;
+  }
+  @media (min-width: 768px) {
+    .about-hero {
+      margin-bottom: 80px;
+    }
   }
   .about-lede {
     font-size: 1.2rem;
@@ -121,7 +126,12 @@ import { site } from '../data/site';
     margin-top: 16px;
   }
   .about-section {
-    margin-bottom: 48px;
+    margin-bottom: 64px;
+  }
+  @media (min-width: 768px) {
+    .about-section {
+      margin-bottom: 80px;
+    }
   }
   .about-section h2 {
     font-size: 1.8rem;
@@ -192,9 +202,14 @@ import { site } from '../data/site';
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 24px;
-    margin-top: 48px;
+    margin-top: 64px;
     padding-top: 24px;
     border-top: 2px solid var(--stroke);
+  }
+  @media (min-width: 768px) {
+    .about-facts {
+      margin-top: 80px;
+    }
   }
   .about-facts h3 {
     font-size: 0.9rem;
