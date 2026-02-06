@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Comments from '../components/Comments.astro';
 import { site } from '../data/site';
 import { getCollection } from 'astro:content';
 
@@ -36,5 +37,8 @@ const { Content } = await post.render();
     <div class="article-content">
       <Content />
     </div>
+    
+    <!-- Giscus Comments -->
+    <Comments />
   </article>
 </BaseLayout>
