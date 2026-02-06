@@ -9,16 +9,18 @@ The AI frontier just got a lot more interesting. Both Anthropic and OpenAI relea
 
 ## Claude Opus 4.6: The Reasoning Beast
 
-**[Released: Feb 5, 2026](https://www.anthropic.com/news/claude-opus-4-6)**
+**Released: Feb 5, 2026** - [Official Announcement](https://www.anthropic.com/news/claude-opus-4-6) | [System Card](https://www.anthropic.com/claude-opus-4-6-system-card)
 
 Anthropic's flagship model just got significantly smarter. Opus 4.6 brings:
 
 ### Key Capabilities
-- **State-of-the-art agentic coding** - Dominates Terminal-Bench 2.0 (77.3%)
-- **Frontier reasoning** - Highest score on Humanity's Last Exam
-- **Massive context** - 1M tokens (beta), first for Opus-class
-- **Long-context mastery** - 76% on 8-needle MRCR v2 (vs 18.5% for Sonnet 4.5)
-- **Knowledge work** - 144 Elo points ahead of GPT-5.2 on GDPval-AA
+- **State-of-the-art agentic coding** - Dominates Terminal-Bench 2.0 at 77.3%[^1]
+- **Frontier reasoning** - Highest score on Humanity's Last Exam[^1]
+- **Massive context** - 1M tokens (beta), first for Opus-class models[^1]
+- **Long-context mastery** - 76% on 8-needle MRCR v2 (vs 18.5% for Sonnet 4.5)[^1]
+- **Knowledge work** - 144 Elo points ahead of GPT-5.2 on GDPval-AA[^1]
+
+[^1]: [Claude Opus 4.6 Announcement](https://www.anthropic.com/news/claude-opus-4-6)
 
 ### What's New
 - **Adaptive thinking** - Model chooses when to use extended reasoning
@@ -35,16 +37,18 @@ Claude in Excel got major upgrades. Claude in PowerPoint launched (research prev
 
 ## GPT-5.3-Codex: The Self-Building Agent
 
-**[Released: Feb 5, 2026](https://openai.com/index/introducing-gpt-5-3-codex/)**
+**Released: Feb 5, 2026** - [Official Announcement](https://openai.com/index/introducing-gpt-5-3-codex/) | [System Card](https://openai.com/index/gpt-5-3-codex-system-card/)
 
 OpenAI's latest Codex model is the first that helped build *itself*. The team used early versions to debug its own training, manage deployment, and diagnose test results.
 
 ### Key Capabilities
-- **56.8% on SWE-Bench Pro** - Industry-leading real-world software engineering
-- **77.3% on Terminal-Bench 2.0** - Matches Opus 4.6 (both crushing prior SOTA)
-- **64.7% on OSWorld-Verified** - Far ahead of GPT-5.2 (37.9%)
-- **25% faster** - Infrastructure improvements across the board
-- **Interactive collaboration** - Real-time steering while model works
+- **56.8% on SWE-Bench Pro**[^2] - Industry-leading real-world software engineering
+- **77.3% on Terminal-Bench 2.0**[^2] - Matches Opus 4.6 (both crushing prior SOTA)
+- **64.7% on OSWorld-Verified**[^2] - Far ahead of GPT-5.2 (37.9%)
+- **25% faster**[^2] - Infrastructure improvements across the board
+- **Interactive collaboration** - Real-time steering while model works[^2]
+
+[^2]: [GPT-5.3-Codex Announcement](https://openai.com/index/introducing-gpt-5-3-codex/)
 
 ### Beyond Coding
 GPT-5.3-Codex isn't just a coding model. It matches GPT-5.2 on GDPval (professional knowledge work). Built slide decks, spreadsheets, analyzed data - the full spectrum of knowledge work.
@@ -52,10 +56,12 @@ GPT-5.3-Codex isn't just a coding model. It matches GPT-5.2 on GDPval (professio
 The model autonomously built two fully functional games (racing + diving) over millions of tokens using generic prompts like "fix the bug" and "improve the game." The results are impressively polished.
 
 ### Cybersecurity Note
-First model classified as **High capability** for cyber tasks under OpenAI's Preparedness Framework. Directly trained to identify vulnerabilities. OpenAI launched:
+First model classified as **High capability** for cyber tasks under OpenAI's Preparedness Framework[^3]. Directly trained to identify vulnerabilities. OpenAI launched:
 - Trusted Access for Cyber (pilot program)
 - $10M in API credits for good-faith security research
 - Aardvark security research agent (private beta expansion)
+
+[^3]: [GPT-5.3-Codex System Card](https://openai.com/index/gpt-5-3-codex-system-card/)
 
 ---
 
