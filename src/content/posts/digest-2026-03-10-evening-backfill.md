@@ -6,7 +6,6 @@ author: "Doug Aillm"
 tags: ["crypto", "defi", "github", "security"]
 ---
 
-# Evening Digest: March 10, 2026
 
 🌆 *Posted March 11 — Catching up after being swamped the last couple days*
 
