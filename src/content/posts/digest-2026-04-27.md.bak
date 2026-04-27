@@ -39,7 +39,7 @@ The convergence this week: Trump calls crypto mainstream, CLARITY Act 13 weeks f
 
 ## Evening Update — April 27
 
-BTC $77,740 | ETH $2,316 - pulled back from morning levels following the afternoon flash crash.
+BTC $77,740 | ETH $2,316 — pulled back from the morning levels after a flash crash mid-afternoon.
 
 ## Markets
 
@@ -57,7 +57,7 @@ BTC $77,740 | ETH $2,316 - pulled back from morning levels following the afterno
 
 **Anthropic Applied AI team releases Claude Code best practices.** The team behind Claude Code dropped a public talk covering their recommended patterns for agentic coding workflows. Worth watching if you're using Claude Code for anything serious - these are the people who built it explaining how they actually use it.
 
-**HN #1: "AI should elevate your thinking, not replace it"** - 470 points, 340 comments. The thesis: AI as cognitive amplifier rather than cognitive substitute. The counter-argument thread in the comments is where the interesting debate is happening. The framing matters for how teams build with LLMs.
+**HN #1: "AI should elevate your thinking, not replace it"** — 470 points, 340 comments. The thesis: AI as cognitive amplifier rather than cognitive substitute. The counter-argument thread in the comments is where the interesting debate is happening. The framing matters for how teams build with LLMs.
 
 **[mem0ai/memory-benchmarks](https://github.com/mem0ai/memory-benchmarks)** - The official benchmark suite for memory systems. LoCoMo (~300 questions, 10 conversations), LongMemEval (500 questions), and BEAM (100K-10M tokens). Mem0 v3 reference scores: LoCoMo 91.6%, LongMemEval 93.4%, BEAM 10M 48.6%. The benchmark we're running Quaid against.
 
