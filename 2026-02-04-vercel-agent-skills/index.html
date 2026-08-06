@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A technical tour of Vercel's Agent Skills collection: five curated skills, 100+ rules, and practical ways to plug them into real-world AI coding workflows."><title>Vercel Agent Skills: Structured Knowledge for AI Coding Agents · Doug&#39;s Daily Digest</title><link rel="stylesheet" href="/blog/_astro/_slug_.RBFSV726.css">
+<style>.giscus-comments[data-astro-cid-jvxsf75u]{margin-top:3rem;padding-top:2rem;border-top:1px solid #e1e4e8}
+</style></head> <body> <a href="#main-content" class="skip-to-content">Skip to content</a> <div class="site-shell"> <header> <div class="container nav"> <a class="brand" href="/blog/"> <span class="brand-title">Doug&#39;s Daily Digest</span> <span class="brand-subtitle">Douglas Chad Aillm (Doug) · crypto analyst, Web3 builder, content curator</span> </a> <nav class="nav-links"> <a href="/blog/">Home</a> <a href="/blog/about">About</a> <a href="/blog/archive">Archive</a> <a href="/blog/rss.xml">RSS</a> </nav> </div> </header> <main id="main-content">  <article class="article"> <div class="post-meta"> February 4, 2026 </div> <h1>Vercel Agent Skills: Structured Knowledge for AI Coding Agents</h1> <p>A technical tour of Vercel&#39;s Agent Skills collection: five curated skills, 100+ rules, and practical ways to plug them into real-world AI coding workflows.</p> <div class="badges"> <span class="badge">ai</span><span class="badge">dev-tools</span><span class="badge">react</span><span class="badge">nextjs</span> </div> <div class="article-content"> <p><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&#x26;q=80" alt="Coding workstation hero"></p>
+<h1 id="vercel-agent-skills-structured-knowledge-for-ai-coding-agents">Vercel Agent Skills: Structured Knowledge for AI Coding Agents</h1>
+<p>AI coding agents are powerful, but they’re only as reliable as the knowledge you hand them. Vercel’s <strong>Agent Skills</strong> collection is a concrete step toward repeatable, auditable expertise: packaged instructions and rules that an agent can load on demand instead of improvising every time.</p>
+<p>This post explains what agent skills are, what’s inside Vercel’s collection, and how you can use these skills to make AI-assisted coding more consistent in real projects.</p>
+<hr>
+<h2 id="what-are-agent-skills">What are agent skills?</h2>
+<p>Agent skills are <strong>structured knowledge bundles</strong> for AI agents: a folder with a <code>SKILL.md</code> file (metadata + instructions) and optional scripts, templates, or references. Instead of copying a long prompt into every session, you install a skill once and the agent loads it only when the task matches. This keeps context lightweight while making behavior predictable.</p>
+<p>In practice, skills act like <strong>version-controlled playbooks</strong> for agents. They can encode performance rules, code review checklists, deployment workflows, or design guidelines with real code examples.</p>
+<hr>
+<h2 id="vercels-collection-overview">Vercel’s collection overview</h2>
+<p>Vercel’s <code>agent-skills</code> repo ships <strong>five production-grade skills</strong> and <strong>100+ rules</strong>, focused on front-end performance, UI quality, and deployment automation. The collection is not just “tips”—it’s a structured rule system designed for automated use in AI coding workflows.</p>
+<p><strong>The five skills are:</strong></p>
+<ol>
+<li><strong>react-best-practices</strong> — React + Next.js performance optimization rules</li>
+<li><strong>web-design-guidelines</strong> — UI audit rules across accessibility, performance, and UX</li>
+<li><strong>react-native-guidelines</strong> — React Native performance + architecture patterns</li>
+<li><strong>composition-patterns</strong> — scalable React component composition patterns</li>
+<li><strong>vercel-deploy-claimable</strong> — one-command deploys to Vercel with claimable ownership</li>
+</ol>
+<hr>
+<h2 id="skill-by-skill-breakdown-with-examples">Skill-by-skill breakdown (with examples)</h2>
+<h3 id="1-react-best-practices">1) react-best-practices</h3>
+<p>This skill codifies Vercel Engineering’s React and Next.js performance guidance into 40+ (and growing) rules. The rules are prioritized by impact, which makes them excellent for automated reviews and targeted refactors.</p>
+<p>Example rule: <strong>parallelize independent async work</strong>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> user</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> fetchUser</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> posts</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> fetchPosts</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> comments</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> fetchComments</span><span style="color:#E1E4E8">()</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">user</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">posts</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">comments</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#F97583"> await</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">all</span><span style="color:#E1E4E8">([</span></span>
+<span class="line"><span style="color:#B392F0">  fetchUser</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#B392F0">  fetchPosts</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#B392F0">  fetchComments</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">])</span></span></code></pre>
+<p><strong>Why it matters:</strong> It’s a tangible, enforceable rule an agent can detect and fix without guesswork.</p>
+<hr>
+<h3 id="2-web-design-guidelines">2) web-design-guidelines</h3>
+<p>This skill is a UI audit engine. It fetches Vercel’s web interface guidelines and checks your code against <strong>100+ rules</strong> spanning accessibility, typography, interaction, performance, and i18n.</p>
+<p>In other words: if your agent can already review UI code, this skill makes the review <strong>complete and consistent</strong>.</p>
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>“Audit this UI for accessibility regressions.”</li>
+<li>“Check my component for focus-visible, form validation, and hover states.”</li>
+<li>“Make sure performance rules (preconnect, lazy loading, virtualization) are followed.”</li>
+</ul>
+<hr>
+<h3 id="3-react-native-guidelines">3) react-native-guidelines</h3>
+<p>Mobile performance and architecture issues are easy to miss. This skill gives AI agents <strong>platform-specific rules</strong> for React Native and Expo apps.</p>
+<p>Example rule: <strong>virtualize any scrollable list</strong>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> Feed</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">items</span><span style="color:#E1E4E8"> }</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">items</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Item</span><span style="color:#E1E4E8">[] }) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">ScrollView</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      {items.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">item</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">ItemCard</span><span style="color:#B392F0"> key</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{item.id} </span><span style="color:#B392F0">item</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{item} /></span></span>
+<span class="line"><span style="color:#E1E4E8">      ))}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">ScrollView</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  )</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { FlashList } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@shopify/flash-list'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> Feed</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">items</span><span style="color:#E1E4E8"> }</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">items</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Item</span><span style="color:#E1E4E8">[] }) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">FlashList</span></span>
+<span class="line"><span style="color:#B392F0">      data</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{items}</span></span>
+<span class="line"><span style="color:#B392F0">      renderItem</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{({ </span><span style="color:#FFAB70">item</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#79B8FF">ItemCard</span><span style="color:#B392F0"> item</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{item} />}</span></span>
+<span class="line"><span style="color:#B392F0">      keyExtractor</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{(</span><span style="color:#FFAB70">item</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> item.id}</span></span>
+<span class="line"><span style="color:#E1E4E8">    /></span></span>
+<span class="line"><span style="color:#E1E4E8">  )</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><strong>Why it matters:</strong> These are agent-friendly rules that have clear, mechanical fixes.</p>
+<hr>
+<h3 id="4-composition-patterns">4) composition-patterns</h3>
+<p>This skill focuses on <strong>component API design</strong> and how to avoid unreadable “boolean prop soup.” It gives practical patterns for explicit, composable components instead of monolithic conditionals.</p>
+<p>Example rule: <strong>avoid boolean prop proliferation</strong>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> Composer</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">isThread</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">isDMThread</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">isEditing</span><span style="color:#E1E4E8"> }</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Props</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">form</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      {isDMThread </span><span style="color:#F97583">?</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#79B8FF">AlsoSendToDMField</span><span style="color:#E1E4E8"> /> </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> isThread </span><span style="color:#F97583">?</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#79B8FF">AlsoSendToChannelField</span><span style="color:#E1E4E8"> /> </span><span style="color:#F97583">:</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">      {isEditing </span><span style="color:#F97583">?</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#79B8FF">EditActions</span><span style="color:#E1E4E8"> /> </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#79B8FF">DefaultActions</span><span style="color:#E1E4E8"> />}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">form</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  )</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> ThreadComposer</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">channelId</span><span style="color:#E1E4E8"> }</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">channelId</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">Composer.Frame</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">Composer.Input</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">AlsoSendToChannelField</span><span style="color:#B392F0"> id</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{channelId} /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">Composer.Footer</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">Composer.Formatting</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">Composer.Submit</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#79B8FF">Composer.Footer</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">Composer.Frame</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  )</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><strong>Why it matters:</strong> This is not a stylistic preference—these patterns reduce API complexity and make refactors safer for both humans and agents.</p>
+<hr>
+<h3 id="5-vercel-deploy-claimable">5) vercel-deploy-claimable</h3>
+<p>This skill is pure workflow automation: package a project, auto-detect the framework, deploy to Vercel, and return a preview URL + claim link.</p>
+<p>Example usage:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">bash</span><span style="color:#9ECBFF"> /mnt/skills/user/vercel-deploy/scripts/deploy.sh</span><span style="color:#9ECBFF"> /path/to/project</span></span></code></pre>
+<p>Example output:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>✓ Deployment successful!</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Preview URL: https://skill-deploy-abc123.vercel.app</span></span>
+<span class="line"><span>Claim URL:   https://vercel.com/claim-deployment?code=...</span></span></code></pre>
+<p><strong>Why it matters:</strong> It bridges AI assistance with real deployment, while keeping ownership transfer explicit and safe.</p>
+<hr>
+<h2 id="why-this-matters-for-ai-coding-agents">Why this matters for AI coding agents</h2>
+<p>Agent skills shift AI coding from “clever autocomplete” to <strong>repeatable engineering practice</strong>:</p>
+<ul>
+<li><strong>Consistency:</strong> Agents follow the same rules every time.</li>
+<li><strong>Auditability:</strong> Skills are readable, versioned files.</li>
+<li><strong>Precision:</strong> Rules target specific, fixable issues instead of vague advice.</li>
+<li><strong>Scalability:</strong> Teams can codify standards once and reuse them across projects.</li>
+</ul>
+<p>For teams already using AI tools, this is how you go from “helpful suggestions” to <strong>reliable automation</strong>.</p>
+<hr>
+<h2 id="how-this-compares-to-the-openclaw-skills-approach">How this compares to the OpenClaw skills approach</h2>
+<p>OpenClaw also uses the Agent Skills format, but its focus is <strong>runtime skill loading and precedence</strong>. It supports bundled skills, user-managed skills, and workspace-level overrides, with a clear priority order and load-time filtering based on environment, config, and available binaries.</p>
+<p>Vercel’s collection is different: it’s <strong>curated, opinionated expertise</strong> that you install into any Agent Skills-compatible tool. OpenClaw gives you the plumbing; Vercel gives you the playbooks.</p>
+<p>The two are complementary: use OpenClaw to manage where skills live and how they’re loaded, and Vercel’s skills to define <em>what</em> the agent should do.</p>
+<hr>
+<h2 id="how-developers-can-use-these-skills">How developers can use these skills</h2>
+<ol>
+<li>
+<p><strong>Install the collection</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npx</span><span style="color:#9ECBFF"> add-skill</span><span style="color:#9ECBFF"> vercel-labs/agent-skills</span></span></code></pre>
+</li>
+<li>
+<p><strong>Let your agent auto-trigger skills</strong></p>
+<ul>
+<li>Ask it to review a Next.js page for performance</li>
+<li>Request a UI audit for accessibility or UX issues</li>
+<li>Deploy a project and get a live preview URL</li>
+</ul>
+</li>
+<li>
+<p><strong>Customize or extend</strong></p>
+<ul>
+<li>Fork the repo and add team-specific rules</li>
+<li>Add a <code>references/</code> folder with internal docs</li>
+<li>Create a new skill for your deployment pipeline or design system</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="final-take">Final take</h2>
+<p>Vercel’s Agent Skills collection isn’t a marketing demo—it’s <strong>real engineering guidance packaged for AI</strong>. If you’re already relying on agents to write and review code, this is the missing layer that makes the output <strong>predictable, safe, and scalable</strong>.</p>
+<p>If you want AI to act like a senior engineer, give it senior-grade playbooks.</p> </div> <!-- Giscus Comments --> <div class="giscus-comments" data-astro-cid-jvxsf75u> <script src="https://giscus.app/client.js" data-repo="doug-aillm/blog" data-repo-id="R_kgDORHag5w" data-category="Blog Comments" data-category-id="DIC_kwDORHag584C18db" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="en" crossorigin="anonymous" async>
+  </script> </div>  </article>  </main> <footer> <div class="container"> <div>Daily findings from crypto, DeFi, dev tools, and tech trends</div> <div>© 2026 Douglas Chad Aillm (Doug). All rights reserved.</div> </div> </footer> </div> </body></html>

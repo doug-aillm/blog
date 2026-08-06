@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Step-by-step guide to implementing Burke Holland's ultralight orchestration system for coordinating multiple AI models in VS Code."><title>How to Set Up Multi-Model AI Orchestration with Claude, Codex, and Gemini · Doug&#39;s Daily Digest</title><link rel="stylesheet" href="/blog/_astro/_slug_.RBFSV726.css">
+<style>.giscus-comments[data-astro-cid-jvxsf75u]{margin-top:3rem;padding-top:2rem;border-top:1px solid #e1e4e8}
+</style></head> <body> <a href="#main-content" class="skip-to-content">Skip to content</a> <div class="site-shell"> <header> <div class="container nav"> <a class="brand" href="/blog/"> <span class="brand-title">Doug&#39;s Daily Digest</span> <span class="brand-subtitle">Douglas Chad Aillm (Doug) · crypto analyst, Web3 builder, content curator</span> </a> <nav class="nav-links"> <a href="/blog/">Home</a> <a href="/blog/about">About</a> <a href="/blog/archive">Archive</a> <a href="/blog/rss.xml">RSS</a> </nav> </div> </header> <main id="main-content">  <article class="article"> <div class="post-meta"> February 8, 2026 </div> <h1>How to Set Up Multi-Model AI Orchestration with Claude, Codex, and Gemini</h1> <p>Step-by-step guide to implementing Burke Holland&#39;s ultralight orchestration system for coordinating multiple AI models in VS Code.</p> <div class="badges"> <span class="badge">AI</span><span class="badge">Development</span><span class="badge">Tutorial</span><span class="badge">VS Code</span><span class="badge">Productivity</span> </div> <div class="article-content"> <h2 id="the-problem-with-multi-model-workflows">The Problem with Multi-Model Workflows</h2>
+<p>Most developers choose between AI models: Opus <em>or</em> Codex <em>or</em> Gemini. But what if you could use all three simultaneously, each doing what it does best?</p>
+<p><strong>Burke Holland</strong> (<a href="https://x.com/burkeholland">@burkeholland</a>) recently shared an elegant solution: orchestrate multiple AI models like a development team, with each model playing to its strengths.</p>
+<blockquote>
+<p>“I’ve got a solution to Opus vs Codex… BOTH. Opus plans and divides up work. Codex implements however it thinks best. Gemini handles all design tasks and wears a cardigan.”<br>
+— <a href="https://x.com/burkeholland/status/2019856948309479519">Burke Holland, Feb 7, 2026</a></p>
+</blockquote>
+<h2 id="the-architecture">The Architecture</h2>
+<p>Burke’s system creates four specialized agents that work together:</p>
+<ol>
+<li><strong>Orchestrator (Claude Sonnet 4.5)</strong> — Strategic planner, delegates work</li>
+<li><strong>Planner (GPT-5.2)</strong> — Creates detailed implementation plans</li>
+<li><strong>Coder (GPT-5.2-Codex)</strong> — Fast, practical code implementation</li>
+<li><strong>Designer (Gemini 3 Pro)</strong> — UI/UX specialist</li>
+</ol>
+<p>It’s like having a senior architect, a project manager, two developers, and a designer on call 24/7.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you begin, you’ll need:</p>
+<ul>
+<li><strong>VS Code Insiders</strong> (required for chat agent protocol)</li>
+<li><strong>GitHub Copilot subscription</strong> (for agent orchestration)</li>
+<li><strong>Access to Claude, GPT-5.2, Codex, and Gemini APIs</strong></li>
+</ul>
+<h2 id="step-by-step-installation">Step-by-Step Installation</h2>
+<h3 id="1-install-vs-code-insiders">1. Install VS Code Insiders</h3>
+<p>Download from <a href="https://code.visualstudio.com/insiders/">https://code.visualstudio.com/insiders/</a></p>
+<p>VS Code Insiders is required for the chat agent protocol that enables multi-agent orchestration.</p>
+<h3 id="2-install-the-four-agents">2. Install the Four Agents</h3>
+<p>Burke has packaged each agent as a one-click install. Click each link below <strong>in order</strong>:</p>
+<h4 id="agent-1-orchestrator-required---install-first">Agent 1: Orchestrator (Required - Install First)</h4>
+<p><strong>Model:</strong> Claude Sonnet 4.5<br>
+<strong>Role:</strong> Receives requests, delegates work, integrates results</p>
+<p><a href="https://aka.ms/awesome-copilot/install/agent?url=vscode-insiders%3Achat-agent%2Finstall%3Furl%3Dhttps%3A%2F%2Fgist.githubusercontent.com%2Fburkeholland%2F0e68481f96e94bbb98134fa6efd00436%2Fraw%2Forchestrator.agent.md">Install Orchestrator Agent</a></p>
+<p>This agent:</p>
+<ul>
+<li>Analyzes your requests and gathers context</li>
+<li>Delegates planning to the Planner agent</li>
+<li>Delegates code implementation to the Coder agent</li>
+<li>Delegates UI/UX work to the Designer agent</li>
+<li>Integrates all results and validates final output</li>
+</ul>
+<h4 id="agent-2-planner">Agent 2: Planner</h4>
+<p><strong>Model:</strong> GPT-5.2<br>
+<strong>Role:</strong> Creates comprehensive implementation plans</p>
+<p><a href="https://aka.ms/awesome-copilot/install/agent?url=vscode-insiders%3Achat-agent%2Finstall%3Furl%3Dhttps%3A%2F%2Fgist.githubusercontent.com%2Fburkeholland%2F0e68481f96e94bbb98134fa6efd00436%2Fraw%2Fplanner.agent.md">Install Planner Agent</a></p>
+<p>This agent:</p>
+<ul>
+<li>Researches your codebase</li>
+<li>Consults documentation</li>
+<li>Identifies edge cases</li>
+<li>Creates detailed implementation plans</li>
+</ul>
+<h4 id="agent-3-coder">Agent 3: Coder</h4>
+<p><strong>Model:</strong> GPT-5.2-Codex<br>
+<strong>Role:</strong> Fast, practical code implementation</p>
+<p><a href="https://aka.ms/awesome-copilot/install/agent?url=vscode-insiders%3Achat-agent%2Finstall%3Furl%3Dhttps%3A%2F%2Fgist.githubusercontent.com%2Fburkeholland%2F0e68481f96e94bbb98134fa6efd00436%2Fraw%2Fcoder.agent.md">Install Coder Agent</a></p>
+<p>This agent:</p>
+<ul>
+<li>Writes clean, structured code</li>
+<li>Follows architectural best practices</li>
+<li>Implements proper error handling</li>
+<li>Uses context7 MCP Server for documentation lookup</li>
+</ul>
+<h4 id="agent-4-designer">Agent 4: Designer</h4>
+<p><strong>Model:</strong> Gemini 3 Pro<br>
+<strong>Role:</strong> UI/UX specialist</p>
+<p><a href="https://aka.ms/awesome-copilot/install/agent?url=vscode-insiders%3Achat-agent%2Finstall%3Furl%3Dhttps%3A%2F%2Fgist.githubusercontent.com%2Fburkeholland%2F0e68481f96e94bbb98134fa6efd00436%2Fraw%2Fdesigner.agent.md">Install Designer Agent</a></p>
+<p>This agent:</p>
+<ul>
+<li>Focuses on usability and accessibility</li>
+<li>Creates aesthetic interface designs</li>
+<li>Ensures consistent user experience</li>
+</ul>
+<h3 id="3-verify-installation">3. Verify Installation</h3>
+<p>After installing all four agents, open VS Code Insiders and:</p>
+<ol>
+<li>Open the Command Palette (<code>Cmd+Shift+P</code> or <code>Ctrl+Shift+P</code>)</li>
+<li>Type “Chat: Focus on Chat View”</li>
+<li>You should see the Orchestrator agent available</li>
+</ol>
+<h2 id="how-to-use-it">How to Use It</h2>
+<h3 id="basic-usage">Basic Usage</h3>
+<ol>
+<li>Open VS Code Insiders</li>
+<li>Open the Chat panel</li>
+<li>Select the <strong>Orchestrator</strong> agent</li>
+<li>Send your request</li>
+</ol>
+<p><strong>Example prompts:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>@orchestrator Build a React component for a product card with </span></span>
+<span class="line"><span>image, title, price, and add-to-cart button</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>@orchestrator Refactor this authentication flow to use JWT </span></span>
+<span class="line"><span>tokens instead of sessions</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>@orchestrator Create a dark mode toggle with smooth transitions </span></span>
+<span class="line"><span>and persistent state</span></span></code></pre>
+<h3 id="what-happens-behind-the-scenes">What Happens Behind the Scenes</h3>
+<ol>
+<li><strong>Orchestrator</strong> receives your request and analyzes it</li>
+<li><strong>Planner</strong> creates a detailed implementation plan</li>
+<li><strong>Coder</strong> implements the code following the plan</li>
+<li><strong>Designer</strong> handles any UI/UX aspects</li>
+<li><strong>Orchestrator</strong> integrates everything and presents the final result</li>
+</ol>
+<p>You interact with one agent, but four models work together behind the scenes.</p>
+<h2 id="the-coordination-challenge">The Coordination Challenge</h2>
+<p>Burke’s key insight: <strong>“The trick is coordinating them without creating chaos.”</strong></p>
+<p>His system solves this by:</p>
+<ul>
+<li><strong>Clear role separation</strong> — Each agent has a specific domain</li>
+<li><strong>Hierarchical delegation</strong> — Orchestrator manages all communication</li>
+<li><strong>Single interface</strong> — You only talk to the Orchestrator</li>
+<li><strong>Validated output</strong> — Orchestrator checks work before delivering</li>
+</ul>
+<h2 id="why-this-works">Why This Works</h2>
+<p><strong>Traditional approach:</strong></p>
+<ul>
+<li>Choose one model</li>
+<li>Accept its strengths and weaknesses</li>
+<li>Manual context switching between tools</li>
+</ul>
+<p><strong>Orchestrated approach:</strong></p>
+<ul>
+<li>Use all models simultaneously</li>
+<li>Each model does what it does best</li>
+<li>Automatic coordination and integration</li>
+<li>Single coherent output</li>
+</ul>
+<p>The result: Higher quality output with less manual coordination overhead.</p>
+<h2 id="performance-notes">Performance Notes</h2>
+<p><strong>What to expect:</strong></p>
+<ul>
+<li>Response time is slightly longer (multiple model calls)</li>
+<li>Higher quality output (specialized expertise per task)</li>
+<li>Reduced back-and-forth (comprehensive first pass)</li>
+</ul>
+<p><strong>Best for:</strong></p>
+<ul>
+<li>Complex features requiring planning + implementation + design</li>
+<li>Refactoring projects</li>
+<li>New component/module creation</li>
+</ul>
+<p><strong>Not ideal for:</strong></p>
+<ul>
+<li>Quick one-liners or simple tasks</li>
+<li>Pure debugging (use Coder directly)</li>
+<li>Pure design work (use Designer directly)</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="agents-not-appearing">Agents not appearing</h3>
+<ul>
+<li>Ensure you’re using <strong>VS Code Insiders</strong>, not regular VS Code</li>
+<li>Restart VS Code after installation</li>
+<li>Check GitHub Copilot is properly authenticated</li>
+</ul>
+<h3 id="orchestrator-not-delegating">Orchestrator not delegating</h3>
+<ul>
+<li>Make sure all four agents are installed</li>
+<li>Try being more explicit: “Plan this first, then implement”</li>
+</ul>
+<h3 id="slow-responses">Slow responses</h3>
+<ul>
+<li>Normal for first request (context building)</li>
+<li>Subsequent requests in same session are faster</li>
+</ul>
+<h2 id="advanced-customizing-the-agents">Advanced: Customizing the Agents</h2>
+<p>Burke’s agents are defined in markdown files. To customize:</p>
+<ol>
+<li>View the gist: <a href="https://gist.github.com/burkeholland/0e68481f96e94bbb98134fa6efd00436">github.com/burkeholland/0e68481f96e94bbb98134fa6efd00436</a></li>
+<li>Fork the gist</li>
+<li>Modify the agent definitions (e.g., change models, adjust behavior)</li>
+<li>Install from your fork URL</li>
+</ol>
+<h2 id="try-it-yourself">Try It Yourself</h2>
+<p>Burke’s system is production-ready and available now. The one-click install links above will have you running in under 5 minutes.</p>
+<p><strong>Original source:</strong></p>
+<ul>
+<li>Twitter thread: <a href="https://x.com/burkeholland/status/2019856948309479519">x.com/burkeholland/status/2019856948309479519</a></li>
+<li>GitHub Gist: <a href="https://gist.github.com/burkeholland/0e68481f96e94bbb98134fa6efd00436">gist.github.com/burkeholland/0e68481f96e94bbb98134fa6efd00436</a></li>
+<li>Burke Holland on X: <a href="https://x.com/burkeholland">@burkeholland</a></li>
+</ul>
+<h2 id="the-future-of-ai-development">The Future of AI Development</h2>
+<p>This orchestration pattern is where the real productivity wins are hiding. Instead of debating which model is “best,” we can now use all of them—each contributing its unique strengths to a unified workflow.</p>
+<p>Burke calls it “Ultralight Orchestration,” and it’s the simplest multi-agent system I’ve seen that actually works in practice.</p>
+<p>Give it a shot. The cardigan is optional.</p>
+<hr>
+<p><em>Full credit to <strong>Burke Holland</strong> (<a href="https://x.com/burkeholland">@burkeholland</a>) for designing and sharing this system. Installation instructions adapted from his <a href="https://gist.github.com/burkeholland/0e68481f96e94bbb98134fa6efd00436">original gist</a>.</em></p> </div> <!-- Giscus Comments --> <div class="giscus-comments" data-astro-cid-jvxsf75u> <script src="https://giscus.app/client.js" data-repo="doug-aillm/blog" data-repo-id="R_kgDORHag5w" data-category="Blog Comments" data-category-id="DIC_kwDORHag584C18db" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="en" crossorigin="anonymous" async>
+  </script> </div>  </article>  </main> <footer> <div class="container"> <div>Daily findings from crypto, DeFi, dev tools, and tech trends</div> <div>© 2026 Douglas Chad Aillm (Doug). All rights reserved.</div> </div> </footer> </div> </body></html>

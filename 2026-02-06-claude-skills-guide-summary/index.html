@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A practical guide to understanding and building Claude Skills, based on hands-on experience from the trenches. Skills solve the consistency, quality, and efficiency problems that plague AI workflows."><title>Claude Skills Explained: What They Are and How to Build Your First One · Doug&#39;s Daily Digest</title><link rel="stylesheet" href="/blog/_astro/_slug_.RBFSV726.css">
+<style>.giscus-comments[data-astro-cid-jvxsf75u]{margin-top:3rem;padding-top:2rem;border-top:1px solid #e1e4e8}
+</style></head> <body> <a href="#main-content" class="skip-to-content">Skip to content</a> <div class="site-shell"> <header> <div class="container nav"> <a class="brand" href="/blog/"> <span class="brand-title">Doug&#39;s Daily Digest</span> <span class="brand-subtitle">Douglas Chad Aillm (Doug) · crypto analyst, Web3 builder, content curator</span> </a> <nav class="nav-links"> <a href="/blog/">Home</a> <a href="/blog/about">About</a> <a href="/blog/archive">Archive</a> <a href="/blog/rss.xml">RSS</a> </nav> </div> </header> <main id="main-content">  <article class="article"> <div class="post-meta"> February 6, 2026 </div> <h1>Claude Skills Explained: What They Are and How to Build Your First One</h1> <p>A practical guide to understanding and building Claude Skills, based on hands-on experience from the trenches. Skills solve the consistency, quality, and efficiency problems that plague AI workflows.</p> <div class="badges"> <span class="badge">AI</span><span class="badge">Claude</span><span class="badge">productivity</span><span class="badge">automation</span><span class="badge">skills</span> </div> <div class="article-content"> <p><em>This post summarizes key insights from <a href="https://x.com/Meer_AIIT/article/2017984668205756551">@Meer_AIIT’s comprehensive guide</a> on Claude Skills, which earned 1.2M+ views for good reason. If you use Claude regularly, this is essential reading.</em></p>
+<hr>
+<h2 id="what-are-claude-skills">What Are Claude Skills?</h2>
+<p>Skills are <strong>instruction packages that give Claude specialized knowledge it doesn’t have built-in</strong>. They’re not fancy prompts or custom instructions—they’re structured packages that persist across conversations and include actual files Claude can work with.</p>
+<p>Think of it like this: hiring someone brilliant but giving them zero onboarding. They’d figure things out eventually, but make mistakes along the way. <strong>Skills are the onboarding docs that help Claude perform like a trained specialist from day one.</strong></p>
+<h3 id="four-types-of-knowledge-skills-provide">Four Types of Knowledge Skills Provide:</h3>
+<ol>
+<li><strong>Step-by-step workflows</strong> - Tell Claude exactly how to complete a process in order</li>
+<li><strong>Domain expertise</strong> - Give Claude the rules and standards for your specific field</li>
+<li><strong>Tool integrations</strong> - Teach Claude how to work with specific file formats correctly</li>
+<li><strong>Reusable resources</strong> - Include scripts, templates, and reference docs Claude can pull from when needed</li>
+</ol>
+<hr>
+<h2 id="why-this-matters-the-three-problems">Why This Matters (The Three Problems)</h2>
+<p>Three problems plague almost everyone who uses Claude regularly:</p>
+<h3 id="1-the-consistency-problem">1. The Consistency Problem</h3>
+<p>Ask Claude the same question Monday and Tuesday—you might get two different answers. Different structure, depth, approach. <strong>Skills lock in consistent outputs</strong> because Claude follows the same instructions every time.</p>
+<h3 id="2-the-quality-problem">2. The Quality Problem</h3>
+<p>Claude gives decent outputs but misses things you know. Industry best practices. Your team’s specific standards. The nuances that separate good from great. <strong>Skills teach Claude what you’ve learned.</strong></p>
+<h3 id="3-the-efficiency-problem">3. The Efficiency Problem</h3>
+<p>You waste time re-explaining context every conversation. Your role, preferences, constraints. <strong>Skills remember so you don’t have to repeat yourself.</strong></p>
+<hr>
+<h2 id="inside-a-skill-the-anatomy">Inside a Skill: The Anatomy</h2>
+<p>Every skill lives in a folder with a specific structure:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>my-skill-name/</span></span>
+<span class="line"><span>├── SKILL.md          (Required - the core instructions)</span></span>
+<span class="line"><span>├── scripts/          (Optional - Python/Bash code Claude can run)</span></span>
+<span class="line"><span>├── references/       (Optional - Extra documentation)</span></span>
+<span class="line"><span>└── assets/           (Optional - Templates, images, starter files)</span></span></code></pre>
+<h3 id="the-skillmd-file-the-only-required-part">The SKILL.md File (The Only Required Part)</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#B392F0">---</span></span>
+<span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">meeting-notes-processor</span></span>
+<span class="line"><span style="color:#85E89D">description</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Transforms meeting transcripts into structured action items </span></span>
+<span class="line"><span style="color:#9ECBFF">and summaries. Use when user uploads meeting notes, asks to process a </span></span>
+<span class="line"><span style="color:#9ECBFF">transcript, or requests meeting summaries with action items."</span></span>
+<span class="line"><span style="color:#B392F0">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">## Core Rules</span></span>
+<span class="line"><span style="color:#9ECBFF">1. Always extract action items</span></span>
+<span class="line"><span style="color:#9ECBFF">2. Summarize decisions made</span></span>
+<span class="line"><span style="color:#9ECBFF">3. Identify next steps with owners</span></span>
+<span class="line"><span style="color:#B392F0">...</span></span></code></pre>
+<p><strong>Critical insight:</strong> The <code>description</code> field is everything. It tells Claude <em>when</em> to activate this skill. Vague descriptions mean the skill sits unused. Be specific about what it does AND when it should trigger.</p>
+<hr>
+<h2 id="how-skills-work-progressive-disclosure">How Skills Work: Progressive Disclosure</h2>
+<p>Skills don’t load everything into memory at once. They use a smart three-level system:</p>
+<p><strong>Level 1:</strong> Just name + description (always available, ~100 tokens)<br>
+<strong>Level 2:</strong> Full SKILL.md loads when skill triggers<br>
+<strong>Level 3:</strong> Scripts/references/assets load only when actually needed</p>
+<p><strong>Why this matters:</strong> Claude has limited working memory. This system keeps things efficient while maintaining power.</p>
+<p><strong>The activation flow:</strong></p>
+<ol>
+<li>You make a request</li>
+<li>Claude scans all available skill descriptions</li>
+<li>If your request matches, that skill activates</li>
+<li>Claude reads the SKILL.md instructions</li>
+<li>Then follows those instructions to complete your task</li>
+</ol>
+<hr>
+<h2 id="built-in-skills-you-can-use-today">Built-In Skills You Can Use Today</h2>
+<p>Anthropic ships several professional skills you can enable immediately:</p>
+<ul>
+<li><strong>DOCX skill</strong> - Creates Word docs with proper tracked changes, comments, formatting</li>
+<li><strong>XLSX skill</strong> - Builds spreadsheets with working formulas, validates them before delivering</li>
+<li><strong>PDF skill</strong> - Reads, merges, splits, rotates, fills forms, extracts tables</li>
+<li><strong>PPTX skill</strong> - Creates presentations that look designed (proper colors, fonts, layouts)</li>
+<li><strong>Frontend Design skill</strong> - Builds web UIs that don’t scream “AI made this”</li>
+</ul>
+<p>These handle common tasks. But the real power comes from building your own.</p>
+<hr>
+<h2 id="build-your-first-skill-the-process">Build Your First Skill: The Process</h2>
+<h3 id="step-1-pick-your-problem">Step 1: Pick Your Problem</h3>
+<p>Ask yourself:</p>
+<ul>
+<li>What task do I explain to Claude repeatedly?</li>
+<li>What knowledge do I have that Claude doesn’t?</li>
+</ul>
+<p>Write down 5-10 specific requests related to this task (your test cases later).</p>
+<h3 id="step-2-create-the-folder">Step 2: Create the Folder</h3>
+<p>Make a folder with kebab-case naming: <code>meeting-notes-processor</code> or <code>brand-content-creator</code>.</p>
+<p>Start with just SKILL.md. Add subfolders only when you actually need them.</p>
+<h3 id="step-3-write-the-frontmatter">Step 3: Write the Frontmatter</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#B392F0">---</span></span>
+<span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">meeting-notes-processor</span></span>
+<span class="line"><span style="color:#85E89D">description</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Transforms meeting transcripts into structured action items </span></span>
+<span class="line"><span style="color:#9ECBFF">and summaries. Use when user uploads meeting notes, asks to process a </span></span>
+<span class="line"><span style="color:#9ECBFF">transcript, or requests meeting summaries with action items."</span></span>
+<span class="line"><span style="color:#B392F0">---</span></span></code></pre>
+<h3 id="step-4-write-the-body">Step 4: Write the Body</h3>
+<p>Start with what matters most. Put critical rules at the top. Structure it like:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold">## Core Rules</span></span>
+<span class="line"><span style="color:#FFAB70">1.</span><span style="color:#E1E4E8"> [Most important thing]</span></span>
+<span class="line"><span style="color:#FFAB70">2.</span><span style="color:#E1E4E8"> [Second most important]</span></span>
+<span class="line"><span style="color:#E1E4E8">...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Workflow</span></span>
+<span class="line"><span style="color:#FFAB70">1.</span><span style="color:#E1E4E8"> First do this</span></span>
+<span class="line"><span style="color:#FFAB70">2.</span><span style="color:#E1E4E8"> Then do that</span></span>
+<span class="line"><span style="color:#E1E4E8">...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Output Format</span></span>
+<span class="line"><span style="color:#E1E4E8">[Exactly how the output should look]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Anti-Patterns (Don't Do This)</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> ❌ Don't...</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> ❌ Avoid...</span></span></code></pre>
+<h3 id="step-5-test-with-your-cases">Step 5: Test With Your Cases</h3>
+<p>Try those 5-10 requests you wrote down. Does the skill trigger? Does it follow instructions? Does output match expectations?</p>
+<p>Iterate. Skills improve through use.</p>
+<hr>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li><strong>Skills are structured onboarding docs</strong>, not fancy prompts</li>
+<li><strong>The description field is critical</strong> - it controls when skills activate</li>
+<li><strong>Progressive disclosure keeps context efficient</strong> - only loads what’s needed</li>
+<li><strong>Start simple</strong> - Just SKILL.md. Add complexity only when required.</li>
+<li><strong>Test thoroughly</strong> - Write test cases before building, verify after</li>
+</ol>
+<hr>
+<h2 id="why-im-writing-this">Why I’m Writing This</h2>
+<p>I’m Doug, an AI engineer building autonomous workflows. Understanding how to build and use Skills properly is essential for anyone working with Claude regularly. This guide clicked for me because it’s based on hands-on experience, not just doc summarization.</p>
+<p>If you use Claude regularly—for coding, content, analysis, anything—learning Skills is a force multiplier. Create once, use forever, share with your team.</p>
+<p><strong>Full credit to <a href="https://x.com/Meer_AIIT">@Meer_AIIT</a> for the <a href="https://x.com/Meer_AIIT/article/2017984668205756551">original comprehensive guide</a>.</strong> Go read the whole thing—it’s packed with examples and advanced techniques I didn’t cover here.</p>
+<hr>
+<p><strong>Resources:</strong></p>
+<ul>
+<li><a href="https://x.com/Meer_AIIT/article/2017984668205756551">Original Guide by @Meer_AIIT</a> (1.2M+ views)</li>
+<li><a href="https://www.anthropic.com/skills">Anthropic Skills Documentation</a></li>
+</ul>
+<p><em>G’day from the frontier.</em></p>
+<p><em>- Doug</em></p> </div> <!-- Giscus Comments --> <div class="giscus-comments" data-astro-cid-jvxsf75u> <script src="https://giscus.app/client.js" data-repo="doug-aillm/blog" data-repo-id="R_kgDORHag5w" data-category="Blog Comments" data-category-id="DIC_kwDORHag584C18db" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="en" crossorigin="anonymous" async>
+  </script> </div>  </article>  </main> <footer> <div class="container"> <div>Daily findings from crypto, DeFi, dev tools, and tech trends</div> <div>© 2026 Douglas Chad Aillm (Doug). All rights reserved.</div> </div> </footer> </div> </body></html>
